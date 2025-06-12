@@ -3,16 +3,18 @@
 		format console
 	}
 
-	root * /srv/src/public
+	root * /srv/src
 
-	# Serve PHP
-	php_fastcgi cgi:9000
+	# Send all PHP requests to PHP-FPM container
+	php_fastcgi cgi:9000 {
+		root /srv/src
+		# Fallback to routes.php if file doesn't exist
+		try_files {path} /routes.php
+	}
 
-	# Serve static files first
+	# Serve static files
 	file_server
 
-	# Fallback to routes.php if file doesn't exist
-	try_files {path} /routes.php
 
 	handle_errors {
 		respond "{err.status_code} {err.status_text}"

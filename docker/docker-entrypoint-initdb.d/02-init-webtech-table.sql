@@ -8,3 +8,10 @@ grant insert on table temperature to webtechuser;
 grant select on table temperature to webtechuser;
 grant update on table temperature to webtechuser;
 grant delete on table temperature to webtechuser;
+
+CREATE TABLE highscores (
+    id SERIAL PRIMARY KEY,
+    player_name VARCHAR(100),
+    score INTEGER,
+    achieved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
