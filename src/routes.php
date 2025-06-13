@@ -2,9 +2,11 @@
 
 require_once __DIR__ . '/lib/router.php';
 
-get('/', 'views/index.php');
+get('/index', 'views/index.php');
 
 get('/dashboard', 'views/dashboard.php');
+
+get('/leaderboard', 'views/leaderboard.php');
 
 get('/api/db-status', function () {
     require_once __DIR__ . '/lib/lib.php';
@@ -58,4 +60,67 @@ delete('/api/temperature/$id', function ($id) {
     handleRequest($connectToPostgres, $query, $bindings, $HTTP_OK);
 });
 
+// highscore api
+
+get('/api/highscores', function () {
+    require_once __DIR__ . '/lib/lib.php';
+    $query = 'SELECT * FROM highscores ORDER BY score DESC, created_at ASC LIMIT 10';
+    handleRequest($connectToPostgres, $query, [], $HTTP_OK);
+});
+
+get('/api/highscores/$id', function ($id) {
+    require_once __DIR__ . '/lib/lib.php';
+    $query = 'SELECT * FROM highscores WHERE id = ?';
+    $bindings = [$id];
+    handleRequest($connectToPostgres, $query, $bindings, $HTTP_OK);
+});
+
+post('/api/highscores', function () {
+    require_once __DIR__ . '/lib/lib.php';
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $username = $data['username'] ?? null;
+    $score = $data['score'] ?? null;
+
+    if (!$username || !is_numeric($score)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid input']);
+        exit;
+    }
+
+    $query = 'INSERT INTO highscores (username, score) VALUES (?, ?) RETURNING *';
+    $bindings = [$username, $score];
+    handleRequest($connectToPostgres, $query, $bindings, $HTTP_CREATED);
+});
+
+$updateHighscore = function ($id) {
+    require_once __DIR__ . '/lib/lib.php';
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $username = $data['username'] ?? null;
+    $score = $data['score'] ?? null;
+
+    if (!$username || !is_numeric($score)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid input']);
+        exit;
+    }
+
+    $query = 'UPDATE highscores SET username = ?, score = ? WHERE id = ? RETURNING *';
+    $bindings = [$username, $score, $id];
+    handleRequest($connectToPostgres, $query, $bindings, $HTTP_OK);
+};
+put('/api/highscores/$id', $updateHighscore);
+patch('/api/highscores/$id', $updateHighscore);
+
+delete('/api/highscores/$id', function ($id) {
+    require_once __DIR__ . '/lib/lib.php';
+    $query = 'DELETE FROM highscores WHERE id = ? RETURNING *';
+    $bindings = [$id];
+    handleRequest($connectToPostgres, $query, $bindings, $HTTP_OK);
+});
+
+// 404
+
 any('/404', 'views/404.php');
+
