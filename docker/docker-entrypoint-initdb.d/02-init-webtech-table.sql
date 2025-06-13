@@ -9,9 +9,13 @@ grant select on table temperature to webtechuser;
 grant update on table temperature to webtechuser;
 grant delete on table temperature to webtechuser;
 
-CREATE TABLE highscores (
-    id SERIAL PRIMARY KEY,
-    player_name VARCHAR(100),
-    score INTEGER,
-    achieved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+create table if not exists highscores(
+  id integer primary key generated always as identity,
+  username text not null,
+  score integer not null,
+  created_at timestamp default current_timestamp
 );
+grant insert on table highscores to webtechuser;
+grant select on table highscores to webtechuser;
+grant update on table highscores to webtechuser;
+grant delete on table highscores to webtechuser;
