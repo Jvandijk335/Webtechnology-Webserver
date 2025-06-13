@@ -5,6 +5,11 @@
 
 	root * /srv/src
 
+	handle / {
+		try_files /index.html
+		file_server
+	}
+
 	# Send all PHP requests to PHP-FPM container
 	php_fastcgi cgi:9000 {
 		root /srv/src
