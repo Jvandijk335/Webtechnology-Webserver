@@ -53,42 +53,6 @@ curl http://localhost:80/api/db-status
 
 ---
 
-### Temperature API
-
-### `GET /api/temperature`
-
-Retrieve temperature records, optionally filtered by a datetime range. 
-
-- Query parameters:
-    - `begin` (optional): Start datetime (inclusive), e.g. `2025-05-22 15:36:00`
-    - `end` (optional): End datetime (inclusive). Defaults to urrent server time if not provided.
-- Limits results to 50 records. 
-
-#### Example Requests:
-
-Retrieve last 50 readings:
-
-```bash
-$ curl http://localhost:80/api/temperature
-```
-
-Retrieve readings between two timestamps:
-```bash
-$ curl 'http://localhost:80/api/temperature?begin=2025-05-22%2015:36&end=2025-05-22%2015:40'
-```
-
-#### Response:
-```json
-[
-  {"id":2,"value":50,"datetime":"2025-05-22 15:36:15.104792+02"},
-  {"id":3,"value":50,"datetime":"2025-05-22 15:36:15.909615+02"}
-]
-```
-
-### `GET /api/temperature/<id>`
-
-Get a single temperature record by its unique ID.
-
 ### Highscore API
 
 ### `GET /api/highscores`
