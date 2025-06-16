@@ -4,4 +4,7 @@ RUN apk add --no-cache jo jq curl bash
 
 ADD ./temperature-producer.sh /temperature-producer.sh
 
+# Geef uitvoerrechten
+RUN chmod +x /temperature-producer.sh
+
 ENTRYPOINT ["/temperature-producer.sh"]
