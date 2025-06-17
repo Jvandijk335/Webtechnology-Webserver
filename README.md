@@ -4,11 +4,13 @@ This repository contains a Docker compose file that will set up 4 services. It s
 
 ## How to use
 
+Download and run Docker
+
 To start up the stack, run the following.
 
 ```
-$ git clone git@github.com:bryanhonof/webtech-compose.git
-$ cd webtech-compose
+$ git clone git@github.com:Jvandijk335/Webtechnology-Webserver.git
+$ cd Webtechnology-Webserver
 $ docker compose up
 ```
 
