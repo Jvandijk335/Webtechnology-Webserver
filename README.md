@@ -10,6 +10,7 @@ To start up the stack, run the following.
 
 ```
 $ git clone git@github.com:Jvandijk335/Webtechnology-Webserver.git
+$ cd Webtechnology-Webserver
 $ docker compose up
 ```
 
