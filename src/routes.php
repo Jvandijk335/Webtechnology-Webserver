@@ -8,6 +8,8 @@ get('/dashboard', 'views/dashboard.php');
 
 get('/leaderboard', 'views/leaderboard.php');
 
+get('/about', 'views/project.php');
+
 get('/api/db-status', function () {
     require_once __DIR__ . '/lib/lib.php';
     $pdo = $connectToPostgres();
@@ -64,7 +66,7 @@ delete('/api/temperature/$id', function ($id) {
 
 get('/api/highscores', function () {
     require_once __DIR__ . '/lib/lib.php';
-    $query = 'SELECT * FROM highscores ORDER BY score DESC, created_at ASC LIMIT 10';
+    $query = 'SELECT * FROM highscores ORDER BY score DESC, created_at ASC LIMIT 50';
     handleRequest($connectToPostgres, $query, [], $HTTP_OK);
 });
 
