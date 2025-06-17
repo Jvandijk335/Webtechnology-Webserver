@@ -23,6 +23,16 @@ $ curl http://localhost:80/api/db-status
 
 You can also go to http://localhost:8080 yourself, and see the webapplication (game) appear. 
 
+## Webpages
+
+| Webpage                  |  Directory                      | Description                                          |
+| ---------                | -------------------------       | ---------------------------------------------------- |
+| localhost                | src/index.html                  | This opens the webgame                               |
+| localhost/leaderboard    | src/lib/views/leaderboard.php   | Shows the current leaderboard                        |
+| localhost/about          | src/lib/views/project.php       | Shows the website that gives our project description |
+| localhost/index          | src/lib/views/index.php         | Returns "Hello World!"                               |
+| localhost/<any>          | src/lib/views/404.php           | Any other url return "404"                           |
+
 ## RESTful API
 
 his API provides endpoints for managing temperature readings and highscores, backed by a PostgreSQL database. The API supports CRUD operations with JSON data interchange, using a custom PHP router. [src/routes.php](src/routes.php).
