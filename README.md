@@ -56,12 +56,35 @@ curl http://localhost:80/api/db-status
 ### Highscore API
 
 ### `GET /api/highscores`
-Fetch the top 10 hgihscores, ordered by descending by score and ascending by creation time. 
+Fetches the top 50 highscores, sorted by score (descending) by default
+Supports optional query parameters to customize sorting.
+
+#### Optional Query Parameters:
+
+| Parameter  |  Value                                  | Description                                             |
+| ---------  | --------------------------------------- | ------------------------------------------------------- |
+| `$sort_by` | `id`, `username`, `score`, `created_at` | Choose the column to sort by.                           |
+| `$order`   | `asc`, `desc`                           | Specify ascending (`asc`) or descending (`desc`) order. |
+
 
 #### Example request:
 
+##### Default top 50:
+
 ```bash
 $ curl http://localhost:80/api/highscores
+```
+
+##### Sorted by date (Newest first):
+
+```bash
+curl "http://localhost:80/api/highscores?sort_by=created_at&order=desc"
+```
+
+##### Sorted by name (A-Z):
+
+```bash
+curl "http://localhost:80/api/highscores?sort_by=username&order=asc"
 ```
 
 #### Response:
@@ -156,3 +179,55 @@ $ curl -X DELETE http://localhost:80/api/highscores/15
 - `GET /index` — serves [src/lib/views/index.php](src/lib/views/index.php)
 - `GET /leaderboard` — serves a leaderboard page. 
 - `ANY /404` — serves a 404 error page.
+
+## Tree overview
+```bash
+.
+├── compose.yaml
+├── docker
+│   ├── Caddyfile
+│   ├── docker-entrypoint-initdb.d
+│   │   ├── 01-init-webtech-db.sql
+│   │   └── 02-init-webtech-table.sql
+│   └── php-with-pgsql.Dockerfile
+├── LICENSE
+├── README.md
+└── src
+    ├── Build
+    │   ├── WebTech_Build.data
+    │   ├── WebTech_Build.framework.js
+    │   ├── WebTech_Build.loader.js
+    │   └── WebTech_Build.wasm
+    ├── dependencies.txt
+    ├── GUID.txt
+    ├── index.html
+    ├── lib
+    │   ├── lib.php
+    │   ├── router.php
+    │   └── views
+    │       ├── 404.php
+    │       ├── index.php
+    │       ├── leaderboard.php
+    │       └── project.php
+    ├── ProjectVersion.txt
+    ├── routes.php
+    ├── StreamingAssets
+    │   ├── Ambient.bank
+    │   ├── Master.bank
+    │   ├── Master.strings.bank
+    │   ├── Music.bank
+    │   └── SFX.bank
+    └── TemplateData
+        ├── favicon.ico
+        ├── fullscreen-button.png
+        ├── progress-bar-empty-dark.png
+        ├── progress-bar-empty-light.png
+        ├── progress-bar-full-dark.png
+        ├── progress-bar-full-light.png
+        ├── style.css
+        ├── unity-logo-dark.png
+        ├── unity-logo-light.png
+        └── webgl-logo.png
+
+9 directories, 37 files
+```
