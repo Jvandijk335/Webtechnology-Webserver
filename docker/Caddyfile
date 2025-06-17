@@ -1,4 +1,4 @@
-:80 {
+localhost:80 {
 	log {
 		format console
 	}
@@ -20,6 +20,32 @@
 	# Serve static files
 	file_server
 
+
+	handle_errors {
+		respond "{err.status_code} {err.status_text}"
+	}
+}
+
+localhost:443 {
+	tls internal
+
+	log {
+		format console
+	}
+
+	root * /srv/src
+
+	handle / {
+		try_files /index.html
+		file_server
+	}
+
+	php_fastcgi cgi:9000 {
+		root /srv/src
+		try_files {path} /routes.php
+	}
+
+	file_server
 
 	handle_errors {
 		respond "{err.status_code} {err.status_text}"
