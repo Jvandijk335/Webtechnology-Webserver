@@ -8,6 +8,8 @@ get('/leaderboard', 'views/leaderboard.php');
 
 get('/about', 'views/project.php');
 
+get('/graph', 'views/graph.php');
+
 get('/api/db-status', function () {
     require_once __DIR__ . '/lib/lib.php';
     $pdo = $connectToPostgres();
