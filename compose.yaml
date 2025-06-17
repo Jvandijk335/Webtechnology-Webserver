@@ -1,12 +1,6 @@
 name: WebTech Docker Compose Demo
 
 services:
-  producer:
-    build:
-      context: docker
-      dockerfile: producer.Dockerfile
-    depends_on:
-      - webserver
   webserver:
     image: caddy:2-alpine
     ports:
