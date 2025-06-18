@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f4f4f4; /* aangepast van #f0f2f5 */
+  color: #333;
+  padding: 0;
+}
+
+/* HEADER */
+header {
+  background: #0077cc;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* NAVBAR */
+.navbar, nav {
+  background-color: #005fa3; /* donkerder blauw */
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.nav-links, nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a, nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-links li a:hover, nav ul li a:hover {
+  background-color: #004a82;
+}
+
+/* RESPONSIVE NAV */
+@media (max-width: 600px) {
+  .navbar, nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-links, nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* CONTAINER / MAIN */
+.container, main {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0077cc; /* aangepast */
+}
+
+h1 {
+    color: #ffffff;
+}
+
+ul {
+  line-height: 1.6;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* TABLE STYLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #f7f9fb;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #555;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #eef6ff;
+}
+
+td {
+  font-size: 15px;
+}
+
+/* SORT BUTTONS */
+.sort-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sort-buttons button {
+  background-color: #e9eff5;
+  border: none;
+  padding: 10px 16px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.sort-buttons button:hover {
+  background-color: #cddff1;
+}
+
+.sort-buttons button.active {
+  backgroun

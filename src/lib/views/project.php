@@ -4,41 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Over Ons Web Project</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #0077cc;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #0077cc;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/lib/global_style.css">
 </head>
 <body>
     <header>
-        <h1>Over Ons Web Technologies Project</h1>
+        <h1>About Us</h1>
+        <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/">Game</a></li>
+            <li><a href="/leaderboard">Leaderboard</a></li>
+            <li><a href="/about">About us</a></li>
+        </nav>
     </header>
     <main>
+        <h2>About our Web Technologies Project</h2>
         <p>Welkom op onze game-website! Dit project is ontwikkeld als onderdeel van het Web Technologies vak. Binnen dit project hebben we een interactieve game gemaakt, inclusief een leaderboard dat spelersresultaten bijhoudt.</p>
 
         <h2>Doel van het Project</h2>

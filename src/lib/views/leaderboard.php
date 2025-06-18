@@ -5,111 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leaderboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <link rel="stylesheet" href="/lib/global_style.css">
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .sort-buttons {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .sort-buttons button {
-      background-color: #e9eff5;
-      border: none;
-      padding: 10px 16px;
-      margin: 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background-color 0.3s;
-    }
-
-    .sort-buttons button:hover {
-      background-color: #cddff1;
-    }
-
-    .sort-buttons button.active {
-      background-color: #3498db;
-      color: white;
-      font-weight: bold;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 14px 16px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f7f9fb;
-      border-bottom: 2px solid #e0e0e0;
-      text-transform: uppercase;
-      font-size: 14px;
-      color: #555;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    tr:hover {
-      background-color: #eef6ff;
-    }
-
-    td {
-      border-bottom: 1px solid #e0e0e0;
-      font-size: 15px;
-    }
-
-    @media (max-width: 600px) {
-      th, td {
-        font-size: 13px;
-        padding: 10px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      .sort-buttons button {
-        font-size: 12px;
-        padding: 8px 12px;
-      }
-    }
-  </style>
 </head>
 <body>
+  <header>
+  <h1>Leaderboard</h1>
+  <nav class="navbar">
+      <ul class="nav-links">
+          <li><a href="/">Game</a></li>
+          <li><a href="/leaderboard">Leaderboard</a></li>
+          <li><a href="/about">About us</a></li>
+    </nav>
+  </header>
   <div class="container">
-    <h2>Highscores</h2>
     <div class="sort-buttons">
       <button data-sort="score" data-order="desc" class="active">Score (DESC</button>
       <button data-sort="score" data-order="asc">Score (ASC)</button>
