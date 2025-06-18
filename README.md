@@ -84,7 +84,7 @@ Supports optional query parameters to customize sorting.
 ##### Default top 50:
 
 ```bash
-$ curl http://localhost:80/api/highscores
+curl http://localhost:80/api/highscores
 ```
 
 ##### Sorted by date (Newest first):
@@ -113,7 +113,7 @@ Fetch a single highscore entry by its ID.
 
 #### Example request:
 ```bash
-$ curl http://localhost:80/api/highscores/3
+curl http://localhost:80/api/highscores/3
 ```
 
 #### Response:
@@ -140,7 +140,7 @@ Create a new highscore entry
 
 #### Example request:
 ```bash
-$ curl -H "Content-Type: application/json" -X POST http://localhost:80/api/highscores -d '{"username":"playerX","score":1234}' 
+curl -H "Content-Type: application/json" -X POST http://localhost:80/api/highscores -d '{"username":"playerX","score":1234}' 
 ```
 
 #### Response:
@@ -157,7 +157,7 @@ Update the username and score of an existing highscore record (full update).
 
 #### Example request:
 ```bash
-$ curl -X PUT http://localhost:80/api/highscores 15 -d '{"username":"playerX","score":1500}'
+curl -X PUT http://localhost:80/api/highscores/15 -d '{"username":"playerX","score":1500}'
 ```
 
 #### Response:
@@ -176,7 +176,7 @@ Delete a highscore entry by its ID.
 
 #### Example request:
 ```bash
-$ curl -X DELETE http://localhost:80/api/highscores/15
+curl -X DELETE http://localhost:80/api/highscores/15
 ```
 
 #### Response:
@@ -190,6 +190,7 @@ $ curl -X DELETE http://localhost:80/api/highscores/15
 
 - `GET /index` — serves [src/lib/views/index.php](src/lib/views/index.php)
 - `GET /leaderboard` — serves a leaderboard page. 
+- `GET /about` — serves project description page
 - `ANY /404` — serves a 404 error page.
 
 ## Tree overview
@@ -206,18 +207,20 @@ $ curl -X DELETE http://localhost:80/api/highscores/15
 ├── README.md
 └── src
     ├── Build
-    │   ├── WebTech_Build.data
-    │   ├── WebTech_Build.framework.js
-    │   ├── WebTech_Build.loader.js
-    │   └── WebTech_Build.wasm
+    │   ├── Christmas_Game.data
+    │   ├── Christmas_Game.framework.js
+    │   ├── Christmas_Game.loader.js
+    │   └── Christmas_Game.wasm
     ├── dependencies.txt
     ├── GUID.txt
     ├── index.html
     ├── lib
+    │   ├── global_style.css
     │   ├── lib.php
     │   ├── router.php
     │   └── views
     │       ├── 404.php
+    │       ├── graph.php
     │       ├── index.php
     │       ├── leaderboard.php
     │       └── project.php
@@ -229,17 +232,18 @@ $ curl -X DELETE http://localhost:80/api/highscores/15
     │   ├── Master.strings.bank
     │   ├── Music.bank
     │   └── SFX.bank
-    └── TemplateData
-        ├── favicon.ico
-        ├── fullscreen-button.png
-        ├── progress-bar-empty-dark.png
-        ├── progress-bar-empty-light.png
-        ├── progress-bar-full-dark.png
-        ├── progress-bar-full-light.png
-        ├── style.css
-        ├── unity-logo-dark.png
-        ├── unity-logo-light.png
-        └── webgl-logo.png
+    ├── TemplateData
+    │   ├── favicon.ico
+    │   ├── fullscreen-button.png
+    │   ├── progress-bar-empty-dark.png
+    │   ├── progress-bar-empty-light.png
+    │   ├── progress-bar-full-dark.png
+    │   ├── progress-bar-full-light.png
+    │   ├── style.css
+    │   ├── unity-logo-dark.png
+    │   ├── unity-logo-light.png
+    │   └── webgl-logo.png
+    └── UnityREADME.MD
 
-9 directories, 37 files
+9 directories, 40 files
 ```
