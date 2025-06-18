@@ -46,3 +46,27 @@
 
 </body>
 </html>
+
+<script>
+  const konamiCode = [
+    "ArrowUp", "ArrowUp",
+    "ArrowDown", "ArrowDown",
+    "ArrowLeft", "ArrowRight",
+    "ArrowLeft", "ArrowRight",
+    "b", "a",
+    "Enter"
+  ];
+
+  let input = [];
+
+  window.addEventListener("keydown", function(e) {
+    input.push(e.key);
+    if (input.length > konamiCode.length) {
+      input.shift();
+    }
+
+    if (input.join(",") === konamiCode.join(",")) {
+      window.location.href = "/graph";
+    }
+  });
+</script>

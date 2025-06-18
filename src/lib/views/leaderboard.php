@@ -20,7 +20,7 @@
   </header>
   <div class="container">
     <div class="sort-buttons">
-      <button data-sort="score" data-order="desc" class="active">Score (DESC</button>
+      <button data-sort="score" data-order="desc" class="active">Score (DESC)</button>
       <button data-sort="score" data-order="asc">Score (ASC)</button>
       <button data-sort="username" data-order="asc">Name (A → Z)</button>
       <button data-sort="username" data-order="desc">Name (Z → A)</button>
