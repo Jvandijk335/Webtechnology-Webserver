@@ -67,7 +67,7 @@ curl http://localhost:80/api/db-status
 
 ### Highscore API
 
-### `GET /api/highscores`
+### `GET /api/highscores?sort_by=<value>&order=<value>`
 Fetches the top 50 highscores, sorted by score (descending) by default
 Supports optional query parameters to customize sorting.
 
