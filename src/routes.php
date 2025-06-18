@@ -68,17 +68,27 @@ $updateHighscore = function ($id) {
     require_once __DIR__ . '/lib/lib.php';
     $data = json_decode(file_get_contents('php://input'), true);
 
-    $username = $data['username'] ?? null;
-    $score = $data['score'] ?? null;
+    $fields = [];
+    $bindings = [];
 
-    if (!$username || !is_numeric($score)) {
+    if (isset($data['username'])) {
+        $fields[] = 'username = ?';
+        $bindings[] = $data['username'];
+    }
+
+    if (isset($data['score']) && is_numeric($data['score'])) {
+        $fields[] = 'score = ?';
+        $bindings[] = $data['score'];
+    }
+
+    if (empty($fields)) {
         http_response_code(400);
-        echo json_encode(['error' => 'Invalid input']);
+        echo json_encode(['error' => 'No valid fields to update']);
         exit;
     }
 
-    $query = 'UPDATE highscores SET username = ?, score = ? WHERE id = ? RETURNING *';
-    $bindings = [$username, $score, $id];
+    $bindings[] = $id;
+    $query = 'UPDATE highscores SET ' . implode(', ', $fields) . ' WHERE id = ? RETURNING *';
     handleRequest($connectToPostgres, $query, $bindings, $HTTP_OK);
 };
 put('/api/highscores/$id', $updateHighscore);
