@@ -120,7 +120,6 @@ td {
   font-size: 15px;
 }
 
-/* SORT BUTTONS */
 .sort-buttons {
   text-align: center;
   margin-bottom: 20px;
@@ -142,4 +141,23 @@ td {
 }
 
 .sort-buttons button.active {
-  backgroun
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  th, td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .sort-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
